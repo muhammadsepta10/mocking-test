@@ -13,7 +13,7 @@ export class AppConfigService {
     return this.configService.get<string>('app.APP_PORT');
   }
 
-  get DOPPLER(): string {
-    return this.configService.get<string>('app.DOPPLER');
+  get DOPPLER_TOKEN(): string {
+    return this.configService.get<string>('app.DOPPLER_TOKEN');
   }
 }

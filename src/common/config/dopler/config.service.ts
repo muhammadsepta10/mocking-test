@@ -18,7 +18,8 @@ export class DoplerConfigService implements OnModuleInit {
 
   private async _getAll() {
     const doppler = new DopplerSDK({
-      accessToken: this.appConfigService.DOPPLER || process.env.DOPPLER,
+      accessToken:
+        this.appConfigService.DOPPLER_TOKEN || process.env.DOPPLER_TOKEN,
     });
     const res = (await doppler.secrets.download('url-short', 'dev_moch', {
       format: 'json',
