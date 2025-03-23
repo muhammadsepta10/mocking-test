@@ -55,19 +55,20 @@ export class PostService {
       .catch(() => {
         return { data: {} };
       });
-    return response?.data || null;
+    return response?.data || {};
   }
 
   async createPost(data: CreatePostDTO) {
     const response = await this.axios
       .post<MockDataDTO>(this.doplerConfiService.MOCK_API_URL, data)
       .then((v) => v?.data);
-    return this.postRepository
+    await this.postRepository
       .createQueryBuilder()
       .insert()
       .values(response)
       .execute()
       .then((v) => v.generatedMaps[0]);
+    return response;
   }
 
   async updatePost(id: number, data: UpdatePostDTO) {
