@@ -7,6 +7,7 @@ export class PatchUpdatePostPipe extends JoiValidationPipe {
     return Joi.object<PatchUpdatePostDTO>({
       body: Joi.string().optional().allow(''),
       title: Joi.string().optional().allow(''),
+      userId: Joi.number().required().positive(),
     });
   }
 }
@@ -16,6 +17,7 @@ export class UpdatePostPipe extends JoiValidationPipe {
     return Joi.object<UpdatePostDTO>({
       body: Joi.string().required().allow(''),
       title: Joi.string().required().allow(''),
+      userId: Joi.number().required().positive(),
     });
   }
 }

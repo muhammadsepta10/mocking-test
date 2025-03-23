@@ -50,21 +50,22 @@ export class PostService {
   }
 
   async getPosts(id: number) {
-    const response = await this.axios.get(
-      `${this.doplerConfiService.MOCK_API_URL}/${id}`,
-    );
-    return response.data;
+    const response = await this.axios
+      .get(`${this.doplerConfiService.MOCK_API_URL}/${id}`)
+      .catch(() => {
+        return { data: {} };
+      });
+    return response?.data || null;
   }
 
   async createPost(data: CreatePostDTO) {
     const response = await this.axios
       .post<MockDataDTO>(this.doplerConfiService.MOCK_API_URL, data)
       .then((v) => v?.data);
-    console.log('response', response);
     return this.postRepository
       .createQueryBuilder()
       .insert()
-      .values({ ...response })
+      .values(response)
       .execute()
       .then((v) => v.generatedMaps[0]);
   }
@@ -74,11 +75,13 @@ export class PostService {
       `${this.doplerConfiService.MOCK_API_URL}/${id}`,
       data,
     );
-    return this.postRepository
+    await this.postRepository
       .createQueryBuilder()
-      .insert()
-      .values(response.data)
+      .update()
+      .set(data)
+      .where('id = :id', { id })
       .execute();
+    return response.data;
   }
 
   async patchPost(id: number, data: PatchUpdatePostDTO) {
@@ -86,6 +89,12 @@ export class PostService {
       `${this.doplerConfiService.MOCK_API_URL}/${id}`,
       data,
     );
+    await this.postRepository
+      .createQueryBuilder()
+      .update()
+      .set(data)
+      .where('id = :id', { id })
+      .execute();
     return response.data;
   }
 

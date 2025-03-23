@@ -14,6 +14,8 @@ export class UpdatePostDTO {
   title: string;
   @ApiProperty()
   body: string;
+  @ApiProperty()
+  userId: number;
 }
 
 export class PatchUpdatePostDTO {
@@ -21,6 +23,8 @@ export class PatchUpdatePostDTO {
   title: string;
   @ApiProperty()
   body: string;
+  @ApiProperty()
+  userId: number;
 }
 
 export class MockDataDTO {

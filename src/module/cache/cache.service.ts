@@ -17,7 +17,7 @@ export class CacheService {
 
   async get(cacheKey: string) {
     const data =
-      (await this.appConfigService.NODE_ENV) === 'development'
+      this.appConfigService.NODE_ENV === 'development'
         ? null
         : await this.redisClient.get(cacheKey);
     let decompress = null;

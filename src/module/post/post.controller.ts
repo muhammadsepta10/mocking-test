@@ -29,6 +29,11 @@ export class PostController {
     return this.postService.getAllPosts();
   }
 
+  @Get('/:id')
+  getPosts(@Param('id') id: number) {
+    return this.postService.getPosts(id);
+  }
+
   @Post()
   createPost(@Body(CreatePostPipe) data: CreatePostDTO) {
     return this.postService.createPost(data);
