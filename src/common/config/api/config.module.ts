@@ -15,7 +15,7 @@ import * as Joi from 'joi';
       validationSchema: Joi.object({
         ENV: Joi.string(),
         PORT: Joi.string(),
-        DOPPLER_TOKEN: Joi.string(),
+        DOPPLER: Joi.string(),
       }),
     }),
   ],

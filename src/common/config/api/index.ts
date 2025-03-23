@@ -2,5 +2,5 @@ import { registerAs } from '@nestjs/config';
 export default registerAs('app', () => ({
   NODE_ENV: process.env.NODE_ENV,
   APP_PORT: process.env.APP_PORT,
-  DOPPLER_TOKEN: process.env.DOPPLER_TOKEN,
+  DOPPLER: process.env.DOPPLER,
 }));
