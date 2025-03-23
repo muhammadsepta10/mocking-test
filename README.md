@@ -40,7 +40,7 @@ npm install
 Buat file `.env` atau sesuaikan dengan kebutuhan:
 
 ```sh
-DOPPLER_TOKEN=dp.st.dev_moch.GODGmIh3SEMzFKBqAuJDOyTJuZ8hCFgv8jefLlYNsD9
+DOPPLER_TOKEN=<DOPPLER_TOKEN>
 APP_PORT=3000
 NODE_ENV=development
 ```
