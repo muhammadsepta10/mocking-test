@@ -7,7 +7,7 @@ export class PatchUpdatePostPipe extends JoiValidationPipe {
     return Joi.object<PatchUpdatePostDTO>({
       body: Joi.string().optional().allow(''),
       title: Joi.string().optional().allow(''),
-      userId: Joi.number().required().positive(),
+      userId: Joi.number().optional().positive(),
     });
   }
 }
